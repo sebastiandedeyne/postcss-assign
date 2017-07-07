@@ -1,0 +1,35 @@
+{
+  "name": "postcss-echo",
+  "version": "0.0.0",
+  "description": "PostCSS plugin Less-like class mixins for PostCSS",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "mixin"
+  ],
+  "author": "Sebastian De Deyne <sebastiandedeyne@gmail.com>",
+  "license": "MIT",
+  "repository": "sebastiandedeyne/postcss-echo",
+  "bugs": {
+    "url": "https://github.com/sebastiandedeyne/postcss-echo/issues"
+  },
+  "homepage": "https://github.com/sebastiandedeyne/postcss-echo",
+  "dependencies": {
+    "postcss": "^6.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-postcss": "^2.0.2",
+    "jest": "^20.0.0"
+  },
+  "scripts": {
+    "test": "jest && eslint *.js"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-postcss/es5",
+    "env": {
+      "jest": true
+    }
+  }
+}
