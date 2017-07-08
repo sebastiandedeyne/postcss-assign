@@ -1,9 +1,8 @@
-var postcss = require('postcss');
+const postcss = require('postcss');
+const plugin = require('./');
 
-var plugin = require('./');
-
-function run(input, output, opts) {
-    return postcss([ plugin(opts) ]).process(input)
+function run(input, output, ) {
+    return postcss([plugin()]).process(input)
         .then(result => {
             expect(result.css).toEqual(output);
             expect(result.warnings().length).toBe(0);
@@ -11,46 +10,19 @@ function run(input, output, opts) {
 }
 
 const input = `
-.alert.-danger {
-    @echo .red;
-}
-
-.button.-danger {
-    @echo .red;
-}
-
-.red {
-    background-color: red;
-}
-
-.red {
-  color: white;
-}
+    .alert{@include .red;}
+    .button{@include .red;}
+    .red{background-color: red;}
+    .red{color: white;}
 `;
 
 const expected = `
-.alert.-danger {
-    background-color: red;
-  color: white;
-}
-
-.button.-danger {
-    background-color: red;
-  color: white;
-}
-
-.red {
-    background-color: red;
-}
-
-.red {
-  color: white;
-}
+    .alert{background-color: red;color: white;}
+    .button{background-color: red;color: white;}
+    .red{background-color: red;}
+    .red{color: white;}
 `;
 
-
-it('does something', () => {
-    return run(input, expected, { });
+it('replaces includes with class properties', () => {
+    return run(input, expected);
 });
-
-
