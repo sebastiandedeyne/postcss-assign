@@ -11,32 +11,24 @@ function run(input, output, opts) {
 }
 
 const input = `
-.red {
-    background-color: red;
-}
-
-.red {
-  color: white;
-}
-
 .alert.-danger {
     @echo .red;
 }
 
 .button.-danger {
     @echo .red;
+}
+
+.red {
+    background-color: red;
+}
+
+.red {
+  color: white;
 }
 `;
 
 const expected = `
-.red {
-    background-color: red;
-}
-
-.red {
-  color: white;
-}
-
 .alert.-danger {
     background-color: red;
   color: white;
@@ -44,6 +36,14 @@ const expected = `
 
 .button.-danger {
     background-color: red;
+  color: white;
+}
+
+.red {
+    background-color: red;
+}
+
+.red {
   color: white;
 }
 `;
