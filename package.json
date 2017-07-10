@@ -1,5 +1,5 @@
 {
-  "name": "postcss-echo",
+  "name": "postcss-include-selector",
   "version": "0.0.0",
   "description": "PostCSS plugin Less-like class mixins for PostCSS",
   "keywords": [
@@ -10,11 +10,11 @@
   ],
   "author": "Sebastian De Deyne <sebastiandedeyne@gmail.com>",
   "license": "MIT",
-  "repository": "sebastiandedeyne/postcss-echo",
+  "repository": "sebastiandedeyne/postcss-include-selector",
   "bugs": {
-    "url": "https://github.com/sebastiandedeyne/postcss-echo/issues"
+    "url": "https://github.com/sebastiandedeyne/postcss-include-selector/issues"
   },
-  "homepage": "https://github.com/sebastiandedeyne/postcss-echo",
+  "homepage": "https://github.com/sebastiandedeyne/postcss-include-selector",
   "dependencies": {
     "postcss": "^6.0.1"
   },

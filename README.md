@@ -3,25 +3,33 @@
 [PostCSS] plugin Less-like class mixins for PostCSS.
 
 [PostCSS]: https://github.com/postcss/postcss
-[ci-img]:  https://travis-ci.org/sebastiandedeyne/postcss-echo.svg
-[ci]:      https://travis-ci.org/sebastiandedeyne/postcss-echo
+[ci-img]:  https://travis-ci.org/sebastiandedeyne/postcss-include-selector.svg
+[ci]:      https://travis-ci.org/sebastiandedeyne/postcss-include-selector
 
 ```css
-.foo {
-    /* Input example */
+.red {
+    color: red;
+}
+
+.alert--danger {
+    @include .red;
 }
 ```
 
 ```css
-.foo {
-  /* Output example */
+.red {
+    color: red;
+}
+
+.alert--danger {
+    color: red;
 }
 ```
 
 ## Usage
 
 ```js
-postcss([ require('postcss-echo') ])
+postcss([ require('postcss-include-selector') ])
 ```
 
 See [PostCSS] docs for examples for your environment.
