@@ -1,4 +1,4 @@
-# PostCSS Echo [![Build Status][ci-img]][ci]
+# PostCSS Include Selector [![Build Status][ci-img]][ci]
 
 [PostCSS] plugin Less-like class mixins for PostCSS.
 
