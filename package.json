@@ -1,5 +1,5 @@
 {
-  "name": "postcss-include-selector",
+  "name": "postcss-assign",
   "version": "0.0.0",
   "description": "PostCSS plugin Less-like class mixins for PostCSS",
   "keywords": [
@@ -10,16 +10,17 @@
   ],
   "author": "Sebastian De Deyne <sebastiandedeyne@gmail.com>",
   "license": "MIT",
-  "repository": "sebastiandedeyne/postcss-include-selector",
+  "repository": "sebastiandedeyne/postcss-assign",
   "bugs": {
-    "url": "https://github.com/sebastiandedeyne/postcss-include-selector/issues"
+    "url": "https://github.com/sebastiandedeyne/postcss-assign/issues"
   },
-  "homepage": "https://github.com/sebastiandedeyne/postcss-include-selector",
+  "homepage": "https://github.com/sebastiandedeyne/postcss-assign",
   "dependencies": {
+    "eslint-config-spatie": "^2.0.3",
     "postcss": "^6.0.1"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
+    "eslint": "^4.4.1",
     "eslint-config-postcss": "^2.0.2",
     "jest": "^20.0.0"
   },
