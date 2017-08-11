@@ -1,7 +1,7 @@
 {
   "name": "postcss-assign",
-  "version": "0.0.0",
-  "description": "PostCSS plugin Less-like class mixins for PostCSS",
+  "version": "0.1.0",
+  "description": "PostCSS plugin to apply a selectors properties to another selector",
   "keywords": [
     "postcss",
     "css",
