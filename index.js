@@ -4,26 +4,42 @@ module.exports = postcss.plugin('postcss-assign', () => {
     return root => {
         const selectors = {};
 
-        // First walk all the rules to create an index of available selectors.
-        root.walkRules(mapNodesToSelectors(selectors));
+        // Get the new contents for a node, if it's an `@assign` rule.
+        // Recursively gets the new contents of deeper `@assign` rules too.
+        function getNewNodeContents(node) {
+            if (node.type !== 'atrule' || node.name !== 'assign') {
+                return node;
+            }
 
-        // Then find all the @include rules, and replace them with selectors from the index.
-        root.walkAtRules('include', replaceIncludeNode(selectors));
+            if (! selectors.hasOwnProperty(node.params)) {
+                return [];
+            }
+
+            return flatMap(selectors[node.params], node => {
+                return getNewNodeContents(node.clone());
+            });
+        }
+
+        // First walk all the rules to create an index of available selectors.
+        root.walkRules(function (node) {
+            if (! selectors.hasOwnProperty(node.selector)) {
+                selectors[node.selector] = [];
+            }
+
+            selectors[node.selector].push(...node.nodes);
+        });
+
+        // Then find all the @assign rules, and replace them with selectors from the index.
+        root.walkAtRules('assign', function replaceAssigns(rule) {
+            rule.replaceWith(
+                getNewNodeContents(rule)
+            );
+        });
     };
 });
 
-const mapNodesToSelectors = selectors => node => {
-    if (! selectors.hasOwnProperty(node.selector)) {
-        selectors[node.selector] = [];
-    }
-
-    selectors[node.selector].push(...node.nodes);
-};
-
-const replaceIncludeNode = selectors => node => {
-    const nodes = selectors.hasOwnProperty(node.params)
-        ? selectors[node.params].map(node => node.clone())
-        : [];
-
-    node.replaceWith(nodes);
-};
+function flatMap(array, callback) {
+    return array.map(callback).reduce((flattened, item) => {
+        return flattened.concat(Array.isArray(item) ? item : [item]);
+    }, []);
+}
