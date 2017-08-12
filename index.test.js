@@ -57,3 +57,21 @@ it('cascades assigns', async () => {
 
     await assert(input, expected);
 });
+
+it('assigns multiple selectors', async () => {
+    const input = `
+        .alert{@assign .bg-red, .col-white;}
+        .alert{@assign .bg-red,.col-white;}
+        .col-white{color: white;}
+        .bg-red{background-color: red;}
+    `;
+
+    const expected = `
+        .alert{background-color: red;color: white;}
+        .alert{background-color: red;color: white;}
+        .col-white{color: white;}
+        .bg-red{background-color: red;}
+    `;
+
+    await assert(input, expected);
+});

@@ -11,12 +11,18 @@ module.exports = postcss.plugin('postcss-assign', () => {
                 return node;
             }
 
-            if (! selectors.hasOwnProperty(node.params)) {
-                return [];
-            }
+            const params = node.params
+                .split(',')
+                .map(param => param.trim());
 
-            return flatMap(selectors[node.params], node => {
-                return getNewNodeContents(node.clone());
+            return flatMap(params, param => {
+                if (! selectors.hasOwnProperty(param)) {
+                    return [];
+                }
+
+                return flatMap(selectors[param], node => {
+                    return getNewNodeContents(node.clone());
+                });
             });
         }
 
