@@ -7,22 +7,30 @@
 [ci]:      https://travis-ci.org/sebastiandedeyne/postcss-assign
 
 ```css
-.red {
-    color: red;
+.color-white {
+    color: white;
+}
+
+.background-red {
+    background-color: red;
 }
 
 .alert--danger {
-    @include .red;
+    @assign .background-red, .color-white;
 }
 ```
 
 ```css
-.red {
-    color: red;
+.color-white {
+    color: white;
+}
+
+.background-red {
 }
 
 .alert--danger {
-    color: red;
+    color: white;
+    background-color: red;
 }
 ```
 
